@@ -1,4 +1,6 @@
+import 'package:deal_finder_app/providers/product.dart';
 import 'package:deal_finder_app/providers/products_list.dart';
+import 'package:deal_finder_app/screens/deal_detail_screen.dart';
 import 'package:deal_finder_app/screens/deals_overview_screen.dart';
 import 'package:deal_finder_app/widgets/bottom_appbar.dart';
 import 'package:flutter/material.dart';
@@ -25,11 +27,10 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: MyHomePage(title: 'Flutter Demo Home Page'),
-        routes:{
+        routes: {
           DealsOverview.routeName: (ctx) => DealsOverview(),
-        }
-
-         ,
+          DealDetailScreen.routeName: (ctx) => DealDetailScreen(),
+        },
       ),
     );
   }
@@ -51,7 +52,6 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.favorite))],
         title: Text('Deal Finder'),
       ),
-      
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -114,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomNavigationBar: BottomAppBarWidget(),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
+        onPressed: () {
           Navigator.of(context).pushNamed(DealsOverview.routeName);
         },
         child: const Icon(Icons.search),

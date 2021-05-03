@@ -1,6 +1,5 @@
-
-
 import 'package:deal_finder_app/providers/product.dart';
+import 'package:deal_finder_app/screens/deal_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,7 +11,12 @@ class DealWidget extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
         child: GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              DealDetailScreen.routeName,
+              arguments: deal.id,
+            );
+          },
           child: Image.network(
             deal.imageUrl,
             fit: BoxFit.cover,
@@ -20,11 +24,13 @@ class DealWidget extends StatelessWidget {
         ),
         header: Text(deal.title),
         footer: GridTileBar(
-          
           backgroundColor: Colors.black38,
-          leading: Text('\$${deal.price.toString()}',style: TextStyle(color: Colors.white),),
+          leading: Text(
+            '\$${deal.price.toString()}',
+            style: TextStyle(color: Colors.white),
+          ),
           trailing: IconButton(
-            onPressed: (){},
+            onPressed: () {},
             icon: Icon(Icons.favorite_outline),
           ),
         ),
